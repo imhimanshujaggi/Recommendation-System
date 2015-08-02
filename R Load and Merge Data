@@ -1,0 +1,11 @@
+-- importing data set
+user<- read.csv("User_attributes.csv")
+video <- read.csv("Video_attributes.csv")
+vCasts <- read.csv("Video_casts.csv")
+behviorData <- read.csv("Behavior_training.csv")
+
+-- Merging Data Set--
+merged <- merge(video, behviorData, by = "video_id" )
+merged<- merge(merged, user, by = "user_id")
+merged <-merge(merged, vCasts, by = "container_id")
+write.table(merged, "mergedData.csv", sep=",", row.names=FALSE, col.names=TRUE) 
